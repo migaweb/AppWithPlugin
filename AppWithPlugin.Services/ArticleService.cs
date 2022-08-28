@@ -8,7 +8,7 @@ public interface IArticleService<T> where T : IPluginArticle
 {
   Article<T> MapArticle(Data.Model.Article article);
   List<Article<T>> GetArticles();
-  Article<T> GetArticle(int id);
+  Article<T>? GetArticle(int id);
 }
 
 public class CoreArticleService<T> : IArticleService<T> where T : IPluginArticle
@@ -80,6 +80,13 @@ public class ErmArticleService : CoreArticleService<ErmArticle>, IArticleService
     return result;
   }
 
+  public string SpecialExport()
+  {
+    return System.Text.Json.JsonSerializer.Serialize(
+      _ermDbContext.ErmArticles.Include(e => e.Article).ToList()
+    );
+  }
+
   public override void Save()
   {
     _ermDbContext.SaveChanges();
@@ -122,7 +129,7 @@ public class TacdisArticleService : CoreArticleService<TacdisArticle>, IArticleS
   }
 }
 
-public class ArticleService : CoreArticleService<NoPluginArticle>
+public class ArticleService : CoreArticleService<CoreArticle>
 {
   public ArticleService(CoreDbContext coreDbContext) : base(coreDbContext)
   {

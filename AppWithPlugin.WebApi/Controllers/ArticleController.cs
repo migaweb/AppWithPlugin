@@ -15,6 +15,7 @@ namespace AppWithPlugin.WebApi.Controllers
     {
       _logger = logger;
       _articleService = articleService;
+      logger.LogInformation(nameof(T));
     }
 
     [HttpGet("Get")]

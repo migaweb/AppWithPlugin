@@ -4,7 +4,7 @@ namespace AppWithPlugin.Data;
 
 public class CoreDbContext : DbContext
 {
-  public DbSet<Model.Article> Articles { get; set; }
+  public DbSet<Model.Article> Articles { get; set; } = null!;
 
   public CoreDbContext(DbContextOptions<CoreDbContext> options) : base(options)
   {

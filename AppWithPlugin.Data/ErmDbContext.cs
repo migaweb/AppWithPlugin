@@ -4,7 +4,7 @@ namespace AppWithPlugin.Data;
 
 public class ErmDbContext : CoreDbContext
 {
-  public DbSet<ErmModel.ErmArticle> ErmArticles { get; set; }
+  public DbSet<ErmModel.ErmArticle> ErmArticles { get; set; } = null!;
 
   public ErmDbContext(DbContextOptions<CoreDbContext> options) : base(options)
   {

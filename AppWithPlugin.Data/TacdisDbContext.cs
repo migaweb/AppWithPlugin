@@ -4,7 +4,7 @@ namespace AppWithPlugin.Data;
 
 public class TacdisDbContext : CoreDbContext
 {
-  public DbSet<TacdisModel.TacdisArticle> TacdisArticles { get; set; }
+  public DbSet<TacdisModel.TacdisArticle> TacdisArticles { get; set; } = null!;
 
   public TacdisDbContext(DbContextOptions<CoreDbContext> options) : base(options)
   {

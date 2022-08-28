@@ -13,7 +13,7 @@ public interface IPluginArticle
 
 }
 
-public class NoPluginArticle : IPluginArticle
+public class CoreArticle : IPluginArticle
 {
 
 }
